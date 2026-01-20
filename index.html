@@ -2,144 +2,216 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Tình Bạn Tuổi Học Trò</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vogue Vision | Men's & Nike Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #c5a059;
+            --nike-blue: #000000;
+            --light: #ffffff;
+            --gray: #f4f4f4;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: #fff0f5;
-            margin: 0;
-            padding: 0;
-            color: #4b0082;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--primary);
         }
 
-        header {
-            background: linear-gradient(to right, #ff99cc, #ff66b2);
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-
-        header p {
-            font-size: 1.2em;
-            margin-top: 5px;
-            font-style: italic;
-        }
-
+        /* Navigation */
         nav {
-            background-color: #ff66b2;
-            text-align: center;
-            padding: 12px 0;
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.98);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        nav a {
-            color: white;
-            margin: 0 20px;
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--primary);
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            margin-left: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
         }
 
-        .container {
-            padding: 30px 20px;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .friendship {
-            background: #ffe6f0;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(255,0,128,0.2);
-            text-align: center;
-        }
-
-        .friendship h2 {
-            color: #ff3399;
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-
-        .friendship p {
-            font-size: 1.1em;
-            line-height: 1.6em;
-        }
-
-        .friendship img {
-            max-width: 100%;
-            border-radius: 15px;
-            margin-top: 15px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        }
-
-        footer {
-            background: #ff66b2;
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1491336477066-31156b5e4f35?q=80&w=2070') no-repeat center center/cover;
+            padding: 0 10%;
             color: white;
-            text-align: center;
-            padding: 15px 0;
-            font-style: italic;
-            margin-top: 30px;
+            margin-top: 70px;
         }
+
+        /* Container & Titles */
+        .container { padding: 60px 5%; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; text-transform: uppercase; }
+        .category-tag { color: var(--accent); font-weight: 600; letter-spacing: 2px; display: block; margin-bottom: 10px; }
+
+        /* Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card { transition: var(--transition); position: relative; }
+        .product-image {
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+            background: var(--gray);
+            position: relative;
+        }
+
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .product-card:hover .product-image img { transform: scale(1.08); }
+
+        /* Tag Nike */
+        .nike-badge {
+            position: absolute;
+            top: 15px; left: 15px;
+            background: black; color: white;
+            padding: 5px 12px; font-size: 0.7rem; font-weight: bold;
+            z-index: 2;
+        }
+
+        .quick-add {
+            position: absolute;
+            bottom: -50px; left: 0; width: 100%;
+            padding: 15px; background: var(--primary);
+            color: white; text-align: center;
+            transition: var(--transition); font-size: 0.9rem;
+        }
+        .product-card:hover .quick-add { bottom: 0; }
+
+        .product-info { padding: 15px 0; }
+        .product-info h3 { font-size: 1rem; font-weight: 500; }
+        .price { font-weight: 600; color: #333; margin-top: 5px; }
+
+        footer { background: #111; color: white; padding: 40px; text-align: center; margin-top: 50px; }
+
+        @media (max-width: 768px) { .product-grid { grid-template-columns: 1fr 1fr; } }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>💖 Tình Bạn Tuổi Học Trò 💖</h1>
-    <p>Những trái tim cùng nhau lớn lên, cùng nhau cười và khóc</p>
-</header>
+    <nav>
+        <a href="#" class="logo">VOGUE.</a>
+        <div class="nav-links">
+            <a href="#nu">Nữ</a>
+            <a href="#nam">Nam</a>
+            <a href="#nike">Nike</a>
+            <a href="#">Giỏ hàng</a>
+        </div>
+    </nav>
 
-<nav>
-    <a href="#">Trang chủ</a>
-    <a href="#">Giới thiệu</a>
-    <a href="#">Kỷ niệm</a>
-    <a href="#">Liên hệ</a>
-</nav>
+    <header class="hero">
+        <div>
+            <h1 style="font-size: 4rem;">NEW ARRIVALS</h1>
+            <p>Khám phá phong cách mạnh mẽ cho nam giới & BST Nike mới nhất.</p>
+        </div>
+    </header>
 
-<div class="container">
+    <section class="container" id="nam">
+        <div class="section-header">
+            <span class="category-tag">Mạnh mẽ & Lịch lãm</span>
+            <h2>Thời Trang Nam</h2>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=1920" alt="Suit">
+                    <div class="quick-add">THÊM VÀO GIỎ +</div>
+                </div>
+                <div class="product-info">
+                    <h3>Suit Nam Slim-Fit Charcoal</h3>
+                    <p class="price">4,500,000đ</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1550246140-5119ae4790b8?q=80&w=1920" alt="Shirt">
+                    <div class="quick-add">THÊM VÀO GIỎ +</div>
+                </div>
+                <div class="product-info">
+                    <h3>Sơ Mi Oxford Trắng</h3>
+                    <p class="price">850,000đ</p>
+                </div>
+            </div>
+            </div>
+    </section>
 
-    <div class="friendship">
-        <h2>🌸 Bạn là ngôi sao của mình</h2>
-        <p>
-            Mỗi khi nhìn thấy cậu, tim mình lại rung rinh 😍. 
-            Tình bạn của chúng ta là những ngày nắng vàng trên sân trường, 
-            là tiếng cười vang khắp lớp học. 
-            Cậu luôn là ngôi sao dẫn đường trong những ngày buồn!
-        
+    <section class="container" id="nike" style="background-color: #f9f9f9;">
+        <div class="section-header">
+            <span class="category-tag">Just Do It</span>
+            <h2>Nike Collection</h2>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="nike-badge">HOT</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1920" alt="Nike Red">
+                    <div class="quick-add">THÊM VÀO GIỎ +</div>
+                </div>
+                <div class="product-info">
+                    <h3>Nike Air Max Sport Red</h3>
+                    <p class="price">3,200,000đ</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=1920" alt="Nike Green">
+                    <div class="quick-add">THÊM VÀO GIỎ +</div>
+                </div>
+                <div class="product-info">
+                    <h3>Nike Air Zoom Pegasus</h3>
+                    <p class="price">2,850,000đ</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="nike-badge">NEW</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=1920" alt="Nike White">
+                    <div class="quick-add">THÊM VÀO GIỎ +</div>
+                </div>
+                <div class="product-info">
+                    <h3>Nike Air Force 1 Low</h3>
+                    <p class="price">2,600,000đ</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="friendship">
-        <h2>🎀 Những kỷ niệm ngọt ngào</h2>
-        <p>
-            Chúng ta đã cùng nhau học bài đến khuya, 
-            cùng nhau ăn vặt dưới gốc cây phượng, 
-            cùng cười, cùng khóc… Mỗi kỷ niệm đều khiến tim mình ấm áp 💕.
-        </p>
-        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=800&q=60" alt="Kỷ niệm học trò">
-    </div>
-
-    <div class="friendship">
-        <h2>🌷 Tình bạn vĩnh cửu</h2>
-        <p>
-            Dù mai này có xa nhau, tình bạn này sẽ luôn rực rỡ trong trái tim mình 🌈. 
-            Mỗi lần nhớ lại, mình đều mỉm cười và thấy may mắn vì có cậu bên cạnh.
-        
-    </div>
-
-</div>
-
-<footer>
-    Bài làm của Nguyễn Hoàng Gia Huy 💌 © 2026 - Những trái tim tuổi học trò
-</footer>
+    <footer>
+        <p class="logo" style="color: white; margin-bottom: 20px;">VOGUE.</p>
+        <p>Hệ thống cửa hàng trên toàn quốc | Hotline: 1900 60XX</p>
+        <p style="opacity: 0.5; margin-top: 20px;">&copy; 2026 Vogue Vision</p>
+    </footer>
 
 </body>
 </html>
